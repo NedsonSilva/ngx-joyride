@@ -1,6 +1,6 @@
 context('Actions', () => {
     beforeEach(() => {
-        cy.visit('http://localhost:4500');
+        cy.visit('/');
     });
 
     it('should find the start button', () => {

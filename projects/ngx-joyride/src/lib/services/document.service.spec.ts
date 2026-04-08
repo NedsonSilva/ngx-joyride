@@ -62,20 +62,22 @@ describe('DocumentService', () => {
             expect(documentService.getDocumentHeight()).toBe(50);
         });
 
-        // These two tests work only in IE 11 - Edge
-        xit(`should bind elementsFromPoint to document elementsFromPoint if it doesn't exist`, () => {
-            document.elementsFromPoint.prototype = undefined;
-            expect(document.elementsFromPoint).not.toBeDefined();
+        it(`should bind elementsFromPoint to document elementsFromPoint if it doesn't exist`, () => {
+            const fakeDocument = {
+                documentElement: { scrollHeight: 1, offsetHeight: 1, clientHeight: 1 },
+                body: { scrollHeight: 1, offsetHeight: 1, clientHeight: 1 },
+                elementsFromPoint: undefined,
+            } as any;
+            const domService = TestBed.get(DomRefService);
+            domService.getNativeDocument.and.returnValue(fakeDocument);
 
             documentService = TestBed.get(DocumentService);
 
-            expect(document.elementsFromPoint).toBeDefined();
-            expect(document.elementsFromPoint.toString()).toEqual(
-                documentService['elementsFromPoint'].toString()
-            );
+            expect(fakeDocument.elementsFromPoint).toBeDefined();
+            expect(typeof fakeDocument.elementsFromPoint).toBe('function');
         });
 
-        xit(`should NOT bind elementsFromPoint to document elementsFromPoint if it already exists`, () => {
+        it(`should NOT bind elementsFromPoint to document elementsFromPoint if it already exists`, () => {
             documentService = TestBed.get(DocumentService);
 
             expect(document.elementsFromPoint).toBeDefined();

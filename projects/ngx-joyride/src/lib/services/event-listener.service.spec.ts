@@ -74,11 +74,10 @@ describe('EventListenerService', () => {
         }));
     });
     describe('stopListeningScrollEvents', () => {
-        it('should stop to emit scroll events after its called', done => {
+        it('should stop to emit scroll events after its called', () => {
             let scrollEvents = [];
             eventListenerService.scrollEvent.subscribe(scrollEvt => {
                 scrollEvents.push(scrollEvt);
-                done();
             });
 
             eventListenerService.startListeningScrollEvents();
@@ -95,11 +94,10 @@ describe('EventListenerService', () => {
         });
     });
     describe('stopListeningResizeEvents', () => {
-        it('scrollEvent should NOT emit when we are not listening', done => {
+        it('scrollEvent should NOT emit when we are not listening', () => {
             let resizeEvents = [];
             eventListenerService.resizeEvent.subscribe(resizeEvt => {
                 resizeEvents.push(resizeEvt);
-                done();
             });
 
             eventListenerService.startListeningResizeEvents();

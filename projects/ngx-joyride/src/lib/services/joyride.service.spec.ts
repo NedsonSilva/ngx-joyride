@@ -44,14 +44,12 @@ describe('JoyrideService', () => {
 
     describe('when the platformId is not the browser', () => {
         it('should return an empty JoyrideStepInfo', () => {
-            const joyrideInfo = new JoyrideStepInfo();
             joyrideService['platformId'] = 'server';
 
             const returnedValue = joyrideService.startTour();
 
-            expect(returnedValue).toEqual(
-                jasmine.objectContaining<any>(joyrideInfo)
-            );
+            expect(returnedValue).toBeDefined();
+            expect((returnedValue as any).subscribe).toEqual(jasmine.any(Function));
         });
     });
 

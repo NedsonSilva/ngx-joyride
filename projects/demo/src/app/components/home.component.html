@@ -1,115 +1,73 @@
-<div class="main">
-    <joyrideStep
-        [title]="dynamicTitle"
-        joyrideStep="home1"
-        stepPosition="center"
-        [stepContent]="myCustomContent"
-        (prev)="onPrev()"
-    >
-        <ng-template #myCustomContent>
-            <div style="width: 300px">
-                Della tipografia e della stampa. Lorem Ipsum è considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un
-                anonimo della tipografia e della stampa. Lorem Ipsum è considerato il testo segnaposto standard sin dal sedicesimo secolo,
-                quando un anonimo della tipografia e della stampa. Lorem Ipsum è considerato il testo segnaposto standard sin dal sedicesimo
-                secolo, quando un anonimo tipografo prese una cassetta di caratteri e li assemblò per preparare un testo campione. Lorem
-                Ipsum è considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo della tipografia e della
-                stampa. Lorem Ipsum è considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo
-            </div>
-            <img src="../../assets/images/angular.png" width="100" height="100" />
-        </ng-template>
-    </joyrideStep>
-    <h1
-        style="position: fixed; top: 200px; left: 300px"
-        joyrideStep="home2"
-        (next)="toggleAction()"
-        stepPosition="left"
-        [stepContent]="step3Content"
-    >
-        {{ title }}
-    </h1>
-    <h4 *ngIf="stepVisible" joyrideStep="stepHidden" stepPosition="bottom" [stepContent]="step3Content">Subtitle</h4>
-    <pre
-        joyrideStep="step3"
-        stepPosition="left"
-        (prev)="toggleAction()"
-        [title]="'Step1 Title'"
-        [text]="'This is the text'"
-        style="position: absolute; top: 15px; right: 15px"
-    >
-This is 
-        js code</pre
-    >
-    <div id="tester" [style.width.px]="20">Tester</div>
-    <ng-template #step3Content> <aj-custom-component></aj-custom-component> </ng-template>
-    <img
-        joyrideStep="step4"
-        stepPosition="top"
-        title="Img step"
-        text="Lorem ipsum, Lorem ipsumLsdorem Lorem ipsum, Lorem Lorem ipsum, Lorem Lorem ipsum, Lorem Lorem ipsum, Lorem"
-        src="../../assets/images/angular.png"
-    />
+<section
+    class="hero"
+    joyrideStep="homeHeader"
+    title="ngx-joyride"
+    text="Tour inicial da página demo"
+>
+    <img src="assets/images/angular.png" alt="Angular" class="hero__logo" />
+    <h1 class="hero__title">ngx-joyride</h1>
+    <h2 class="hero__subtitle">
+        A pure Angular directive to build web-app tours
+    </h2>
+    <p class="hero__desc">
+        Let your users learn how to use your application and discover your new
+        features through a tour.
+    </p>
+</section>
 
-    <div joyrideStep="step5" stepPosition="left">Step2</div>
-    <span joyrideStep="step12"> Span </span> <span joyrideStep="step6" [stepContent]="step3Content">Step with custom content</span>
-
-    <joyrideStep joyrideStep="step7" stepPosition="center"></joyrideStep>
-    <div
-        joyrideStep="step13"
-        (done)="stepDone()"
-        class="lorem"
-        title="Lorem"
-        text="Lorem Ipsum è un testo segnaposto utilizzato nel settore 
-        della tipografia e della stampa. Lorem Ipsum è considerato il 
-        testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo 
-        della tipografia e della stampa. Lorem Ipsum è considerato il 
-        testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo 
-        della tipografia e della stampa. Lorem Ipsum è considerato il 
-        testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo 
-        tipografo prese una cassetta di caratteri e li assemblò per preparare un testo campione.
-        Lorem Ipsum è considerato il 
-        testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo 
-        della tipografia e della stampa. Lorem Ipsum è considerato il 
-        testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo 
-        tipografo prese una cassetta di caratteri e li assemblò per preparare un testo campione."
+<section class="cards">
+    <article
+        class="card"
+        joyrideStep="featuresCard"
+        title="Features"
+        text="Recursos principais da biblioteca"
     >
-        Lorem
-    </div>
-    <div class="stepOnRight" joyrideStep="step8">Step on the right side</div>
-
-    <div class="big-panel">
-        This is a big div in order to have the page scroll
-        <div
-            joyrideStep="step9"
-            title="My step"
-            text="This element is Highlighted. Bla bla bla bla bla bal. This element is Highlighted. Bla bla bla bla bla bal"
-            stepPosition="bottom"
-            class="big-panel__footer"
-        >
-            I'm the target!
-        </div>
-        <div class="small-panel">
-            <img
-                joyrideStep="step10"
-                class="big-panel__image"
-                stepPosition="top"
-                title="Img step"
-                text="uuuuu  uuryf sdfdsf"
-                src="../../assets/images/angular.png"
-                [style.width.px]="12"
-                [style.height.px]="12"
-            />
-        </div>
-    </div>
-
-    <div class="scroll">
+        <h3>Features</h3>
         <ul>
-            <li *ngFor="let topic of topics; index as i">{{ topic.name }}</li>
-            <li joyrideStep="scrollStep" [text]="'async text' | joyTranslate" title="Prova Scroll" position="top">Last topic</li>
+            <li>No external dependencies, pure Angular.</li>
+            <li>Scrolls automatically to the target element.</li>
+            <li>Autofixes step position.</li>
+            <li>Supports custom content.</li>
+            <li>Multi pages navigation.</li>
+            <li>AOT compliant.</li>
         </ul>
-    </div>
+    </article>
 
-    <div joyrideStep="step10" stepPosition="right" class="right-bottom">Right-bottom</div>
-    <div joyrideStep="step11" stepPosition="right" [title]="'left bottom' | joyTranslate" class="bottom">Step on the right</div>
-    <footer></footer>
-    <button class="app__start-button" (click)="startTour()">Start Tour</button>
+    <article
+        class="card card--options"
+        joyrideStep="optionsCard"
+        title="Options"
+        text="Configuração básica do tour"
+    >
+        <h3>Options</h3>
+        <ul class="options-list">
+            <li class="option-row">
+                Theme colour <span class="toggle"></span>
+            </li>
+            <li class="option-row">
+                Show counter <span class="toggle toggle--off"></span>
+            </li>
+            <li class="option-row">
+                Show "Prev" button <span class="toggle"></span>
+            </li>
+            <li class="option-row">
+                Default step position: <span class="select">top</span>
+            </li>
+        </ul>
+        <button class="app__start-button" (click)="startTour()">
+            Start the tour
+        </button>
+    </article>
+</section>
+
+<div class="demo-hidden">
+    <div joyrideStep="scrollStep">scroll support</div>
+    <div joyrideStep="step1">step1</div>
+    <div joyrideStep="myStep2">step2</div>
+    <div joyrideStep="home2">step3</div>
+    <div joyrideStep="stepHidden">step4</div>
+    <div joyrideStep="step3">step5</div>
+    <div joyrideStep="step2">step6</div>
+    <div joyrideStep="step11">step7</div>
+    <div joyrideStep="ciao">step8</div>
 </div>

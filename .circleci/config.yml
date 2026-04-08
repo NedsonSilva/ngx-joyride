@@ -1,32 +1,68 @@
 # This config is equivalent to both the '.circleci/extended/orb-free.yml' and the base '.circleci/config.yml'
 version: 2.1
 
-# Orbs are reusable packages of CircleCI configuration that you may share across projects, enabling you to create encapsulated, parameterized commands, jobs, and executors that can be used across multiple projects.
-# See: https://circleci.com/docs/2.0/orb-intro/
 orbs:
-  codecov: codecov/codecov@3.2.2
+  codecov: codecov/codecov@3.2.5
+
 jobs:
   ci-pipeline:
+    parameters:
+      node:
+        type: string
+      angular:
+        type: string
     docker:
-      - image: circleci/node:16-browsers
+      - image: cimg/node:<< parameters.node >>-browsers
         environment:
-          CHROME_BIN: /usr/bin/google-chrome 
+          CHROME_BIN: /usr/bin/google-chrome
     steps:
       - checkout
       - run:
-          name: install
+          name: Install dependencies
           command: npm ci
       - run:
-          name: test
+          name: Align Angular major version
+          command: |
+            if [ "<< parameters.angular >>" = "18" ]; then
+              npm install --no-save \
+                @angular/animations@^18 \
+                @angular/common@^18 \
+                @angular/compiler@^18 \
+                @angular/core@^18 \
+                @angular/forms@^18 \
+                @angular/platform-browser@^18 \
+                @angular/platform-browser-dynamic@^18 \
+                @angular/router@^18 \
+                @angular/cli@^18 \
+                @angular/compiler-cli@^18 \
+                @angular/language-service@^18 \
+                @angular-devkit/build-angular@^18 \
+                @angular-devkit/core@^18 \
+                @angular-devkit/schematics@^18 \
+                ng-packagr@^18
+            fi
+      - run:
+          name: Lint
+          command: npm run lint
+      - run:
+          name: Unit tests
           command: npm run test:unit:ci
       - run:
-          name: build
+          name: Build
           command: npm run build
       - run:
-          name: integration tests
+          name: Integration tests
           command: npm run test:cypress
       - codecov/upload
+
 workflows:
   ci-build:
     jobs:
-      - ci-pipeline
+      - ci-pipeline:
+          name: ci-node18-angular17
+          node: "18.20"
+          angular: "17"
+      - ci-pipeline:
+          name: ci-node20-angular18
+          node: "20.18"
+          angular: "18"

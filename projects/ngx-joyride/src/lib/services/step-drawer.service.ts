@@ -1,10 +1,10 @@
 import {
     Injectable,
     ComponentRef,
-    ComponentFactoryResolver,
     ApplicationRef,
     Injector,
-    EmbeddedViewRef
+    EmbeddedViewRef,
+    createComponent
 } from '@angular/core';
 import { JoyrideStepComponent } from '../components';
 import { JoyrideStep } from '../models';
@@ -14,16 +14,20 @@ export class StepDrawerService {
     private refMap: { [key: string]: ComponentRef<JoyrideStepComponent> } = {};
 
     constructor(
-        private readonly componentFactoryResolver: ComponentFactoryResolver,
         private appRef: ApplicationRef,
         private injector: Injector
     ) {}
 
+    protected createStepComponent(): ComponentRef<JoyrideStepComponent> {
+        return createComponent(JoyrideStepComponent, {
+            environmentInjector: this.appRef.injector,
+            elementInjector: this.injector,
+        });
+    }
+
     draw(step: JoyrideStep) {
-        // 1. Create a component reference from the component
-        const ref: ComponentRef<JoyrideStepComponent> = this.componentFactoryResolver
-            .resolveComponentFactory(JoyrideStepComponent)
-            .create(this.injector);
+        // 1. Create component using the Ivy API.
+        const ref: ComponentRef<JoyrideStepComponent> = this.createStepComponent();
 
         // 2. Attach component to the appRef so that it's inside the ng component tree
         this.appRef.attachView(ref.hostView);

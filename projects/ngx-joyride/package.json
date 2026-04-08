@@ -21,10 +21,11 @@
     },
     "homepage": "https://github.com/tnicola/ngx-joyride#readme",
     "dependencies": {
-        "tslib": "^2.0.0"
+        "tslib": "^2.6.3"
     },
     "peerDependencies": {
-        "@angular/common": ">=8.2.14",
-        "@angular/core": ">=8.2.14"
+        "@angular/common": "^17.0.0 || ^18.0.0",
+        "@angular/core": "^17.0.0 || ^18.0.0",
+        "rxjs": "^7.8.0"
     }
 }

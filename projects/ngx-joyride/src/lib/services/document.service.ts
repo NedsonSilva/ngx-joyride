@@ -33,7 +33,7 @@ export class DocumentService implements IDocumentService {
             return;
         }
         this.setDocumentHeight();
-        var doc = DOMService.getNativeDocument();
+        const doc = DOMService.getNativeDocument();
         if (doc && !doc.elementsFromPoint) {
             // IE 11 - Edge browsers
             doc.elementsFromPoint = this.elementsFromPoint.bind(this);
@@ -242,8 +242,8 @@ export class DocumentService implements IDocumentService {
     }
 
     private elementsFromPoint(x, y) {
-        var parents = [];
-        var parent = void 0;
+        const parents = [];
+        let parent = void 0;
         do {
             const elem = this.DOMService.getNativeDocument().elementFromPoint(
                 x,

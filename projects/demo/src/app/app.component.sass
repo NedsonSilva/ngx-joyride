@@ -1,10 +1,58 @@
+.app-shell
+    min-height: 100vh
+    display: flex
+    flex-direction: column
+
 .toolbar
-    position: sticky
-    top: 0
-    z-index: 2
-    background-color: blue
-    height: 50px
-    & a
-        color: white !important
+    position: relative
+    z-index: 20
+    display: flex
+    align-items: center
+    justify-content: space-between
+    background: #1f4653
+    height: 36px
+    padding: 0 16px
+    color: #fff
 
+.toolbar__brand
+    display: flex
+    align-items: center
+    gap: 8px
+    font-size: 13px
+    font-weight: 500
+    letter-spacing: 0.2px
 
+.toolbar__logo
+    width: 15px
+    height: 15px
+
+.toolbar__nav
+    display: flex
+    gap: 10px
+    margin-right: auto
+    margin-left: 20px
+
+.toolbar__nav a
+    color: #fff
+    font-size: 11px
+    text-decoration: none
+
+.toolbar__nav a:hover
+    text-decoration: underline
+
+.toolbar__corner
+    width: 18px
+    height: 18px
+    background: #fff
+    transform: rotate(45deg)
+    margin-right: -9px
+
+.content
+    flex: 1
+
+.app-footer
+    background: #1f4653
+    color: #d9e4e8
+    text-align: center
+    padding: 6px 0
+    font-size: 10px

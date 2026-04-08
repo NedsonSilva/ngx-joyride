@@ -86,18 +86,17 @@ describe('JoyrideStepsContainerService', () => {
 
     describe('updatePosition', () => {
         // TODO: Refactor spy
-        xit('should publish the change with stepHasBeenModified', () => {
+        it('should publish the change with stepHasBeenModified', () => {
             const step = new JoyrideStep();
             step.name = 'firstStep';
             joyrideStepsContainerService['steps'] = [
                 { id: 'firstStep', step },
                 { id: 'second', step: null }
             ];
-            const stepHasBeenModifiedSpy = spyOn<any>(
-                joyrideStepsContainerService,
-                'stepHasBeenModified'
+            const nextSpy = spyOn<any>(
+                joyrideStepsContainerService['stepHasBeenModified'],
+                'next'
             );
-            const nextSpy = spyOn<any>(stepHasBeenModifiedSpy, 'next');
 
             joyrideStepsContainerService.updatePosition('firstStep', 'bottom');
 

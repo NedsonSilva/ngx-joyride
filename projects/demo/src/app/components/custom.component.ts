@@ -10,6 +10,6 @@ import { Component } from '@angular/core';
             <h3>Subtitle 1</h3>
             <h3>Subtitle 2</h3>
         </div>
-    `
+    `,
 })
 export class CustomComponent {}

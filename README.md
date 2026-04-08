@@ -8,7 +8,24 @@
 An Angular Tour (Joyride) library built entirely in Angular, without using any heavy external dependencies like Bootstrap or JQuery.
 From now on you can easily guide your users through your site showing them all the sections and features.
 
-For Angular 2+ (2 - 13)
+Suporte oficial: Angular 17 e 18
+
+## Compatibility
+
+| ngx-joyride | Angular | Node.js |
+| --- | --- | --- |
+| 2.6+ | 17.x, 18.x | 18.x, 20.x |
+
+## Development quality gates
+
+Execute os checks abaixo antes de abrir PR:
+
+```bash
+npm run lint
+npm run test:unit
+npm run build
+npm run test:cypress
+```
 
 <p align="center">
 	<img src ="https://github.com/tnicola/ngx-joyride/blob/master/docs/joyride-tour.gif" />

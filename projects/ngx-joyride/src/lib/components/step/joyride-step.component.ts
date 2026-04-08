@@ -36,10 +36,10 @@ export const DEFAULT_DISTANCE_FROM_MARGIN_TOP = 2;
 export const DEFAULT_DISTANCE_FROM_MARGIN_LEFT = 2;
 const DEFAULT_DISTANCE_FROM_MARGIN_BOTTOM = 5;
 const DEFAULT_DISTANCE_FROM_MARGIN_RIGHT = 5;
-export enum KEY_CODE {
-  RIGHT_ARROW = 39,
-  LEFT_ARROW = 37,
-  ESCAPE_KEY= 27
+export enum KEY_NAME {
+  RIGHT_ARROW = 'ArrowRight',
+  LEFT_ARROW = 'ArrowLeft',
+  ESCAPE_KEY = 'Escape'
 }
 
 @Component({
@@ -246,17 +246,15 @@ export class JoyrideStepComponent implements OnInit, OnDestroy, AfterViewInit {
 
     @HostListener('window:keyup', ['$event'])
     keyEvent(event: KeyboardEvent) {
-    console.log(event);
-
-    if (event.keyCode === KEY_CODE.RIGHT_ARROW) {
+    if (event.key === KEY_NAME.RIGHT_ARROW) {
       if (this.isLastStep()) {
         this.close();
       } else {
         this.next();
       }
-    } else if (event.keyCode === KEY_CODE.LEFT_ARROW) {
+    } else if (event.key === KEY_NAME.LEFT_ARROW) {
       this.prev();
-    } else if (event.keyCode === KEY_CODE.ESCAPE_KEY) {
+    } else if (event.key === KEY_NAME.ESCAPE_KEY) {
       this.close();
     }
   }

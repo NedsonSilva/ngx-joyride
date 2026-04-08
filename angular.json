@@ -15,11 +15,19 @@
                         "tsConfig": "projects/ngx-joyride/tsconfig.lib.json",
                         "project": "projects/ngx-joyride/ng-package.json"
                     },
-                    "showCircularDependencies": false,
                     "configurations": {
                         "production": {
                             "tsConfig": "projects/ngx-joyride/tsconfig.lib.prod.json"
                         }
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-eslint/builder:lint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "projects/ngx-joyride/**/*.ts",
+                            "projects/ngx-joyride/**/*.html"
+                        ]
                     }
                 },
                 "test": {
@@ -106,6 +114,15 @@
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
                         "browserTarget": "demo:build"
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-eslint/builder:lint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "projects/demo/**/*.ts",
+                            "projects/demo/**/*.html"
+                        ]
                     }
                 },
                 "test": {

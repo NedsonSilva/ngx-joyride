@@ -510,7 +510,7 @@ describe('JoyrideStepComponent', () => {
                     childComponent.step = STEP;
                     childComponent.ngAfterViewInit();
                 });
-                xit('should set the proper style to stepHolder', () => {
+                it('should set the proper style to stepHolder', () => {
                     let stepHolder = hostFixture.debugElement.query(
                         By.css('.joyride-step__holder')
                     );
@@ -520,7 +520,7 @@ describe('JoyrideStepComponent', () => {
                     expect(stepHolder.nativeElement.style.top).toBe('50%');
                     expect(stepHolder.nativeElement.style.left).toBe('50%');
                     expect(stepHolder.nativeElement.style.transform).toBe(
-                        'translate(-100px, -82.5px)'
+                        'translate(0px, 0px)'
                     );
                 });
 

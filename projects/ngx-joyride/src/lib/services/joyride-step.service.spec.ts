@@ -153,7 +153,7 @@ describe('JoyrideStepService', () => {
         it('should call backdropService.redrawTarget', fakeAsync(() => {
             joyrideStepService.startTour();
             tick(DEFAULT_TIMEOUT_BETWEEN_STEPS); //wait for the first step
-            eventListenerService.resizeEvent.next();
+            eventListenerService.resizeEvent.next(undefined);
 
             expect(backdropService.redrawTarget).toHaveBeenCalled();
         }));
